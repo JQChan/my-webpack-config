@@ -36,7 +36,7 @@ module.exports = {
     'resume/select':'../../resources/src/css/resume/select.css',
     'resume/table':'../../resources/src/css/resume/table.css',
     'resume/upload-resume':'../../resources/src/css/resume/upload-resume.css',
-
+    
     //后台菜单栏公用代码
     'home/home-menu':'../../resources/src/js/home/menu.js',
     'position/position-published-list': '../../resources/src/js/position/position-published-list.js',
@@ -106,7 +106,34 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/,
         loader: 'url-loader?limit=1&name=img/[name].[ext]'//limit参数配置信息的参数“?limit=8192”表示将所有小于8kb的图片都转为base64形式（其实应该说超过8kb的才使用 url-loader 来映射到文件，否则转为data url形式）。
-      }
+        //loader: 'url-loader?limit=1&name=img/[folder]/[name].[ext]'//limit参数配置信息的参数“?limit=8192”表示将所有小于8kb的图片都转为base64形式（其实应该说超过8kb的才使用 url-loader 来映射到文件，否则转为data url形式）。
+      },
+
+
+
+      // {
+      //   test: /\.(jpe?g|png|gif|svg)(\?v=\d+\.\d+\.\d+)?$/i,
+      //   exclude: /node_modules/,
+      //   loader: 'file',
+      //   query: {
+      //     regExp: '\\b(assets.+)',
+      //     name: '[0]?[hash:10]',
+      //   },
+      // },
+
+      // {
+      //   test: /\.(png|jpe?g|gif|svg)$/,
+      //   loader: 'file',
+      //   query: {
+      //     name: 'img/[0]', // [N] is the grouping "N" of the match.
+      //     regExp: '\\b(images.+)' //this has to be string surprisingly
+      //   }
+      // }
+
+
+
+
+
       // {
       //   test: /\.jsx?$/,         // Match both .js and .jsx files
       //   exclude: /node_modules/,
@@ -131,7 +158,7 @@ module.exports = {
     new CommonsChunkPlugin({//提取公共的块，即页面js共同的require()引用的文件
       name: 'common',
       filename: 'js/[name].js', //公共模块文件名，若使用了[name]参数，则此name为common，也可以指定其他命名 ,若没有此选项则默认使用上面的output中的filename
-      // children: true,  //暂时不知功能
+      // children: true,  //暂时不知功能      
       minChunks: 2,  //公共的块必须在3个以上entry中使用,默认值为2
       // chunks: [ 'resume/resume-upload', 'resume/resume-folder']  //只提取上面entry中的upload和folder中的公共模块，若没有此选项则默认全部entry
     }),
