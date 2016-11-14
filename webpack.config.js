@@ -73,7 +73,8 @@ module.exports = {
   },
   // externals: {//不将React\ReactDOM打包到文件里面（暂时不需要此项）
   //   'react': 'React',
-  //   'react-dom': 'ReactDOM'
+  //   'react-dom': 'ReactDOM',
+  //   'react-router': 'Router'
   // },
   output: {  //页面打包的JS文件输出配置（通过Webpack打包）
     //path: __dirname , //输出路径（__dirname默认为未打包的文件所在的位置）
@@ -91,7 +92,8 @@ module.exports = {
         query: {
           presets: [
             require.resolve('babel-preset-es2015'),
-            require.resolve('babel-preset-react')
+            require.resolve('babel-preset-react'),
+            require.resolve('babel-preset-stage-2')
           ]
         }
       },
