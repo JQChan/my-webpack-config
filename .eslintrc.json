@@ -1,0 +1,64 @@
+{
+  "parser": "babel-eslint", //指定解释器,ESLint默认为Espree,另外的解释器包括Esprima、Babel-ESLint
+  "parserOptions": {//指定解释器参数
+    //"ecmaVersion": 5, //ECMAScript版本3、5（默认）、6（2015）、7（2016）、8（2017）
+    //"sourceType ": "script",//或者module（代码为ECMAScript模块的话）
+    "ecmaFeatures": {//语言特性对象(全部语言特性选项默认值为false)
+      //"globalReturn ": false,//允许返回全局声明
+      //"impliedStrict": false,//允许全局严格模式
+      "experimentalObjectRestSpread": true,//允许使用还在实验阶段的Object rest/spread属性
+      "jsx": true//允许使用JSX语法
+    }
+  },
+  "env": {//指定环境
+    "browser": true,
+    "commonjs": true,
+    "node": true,
+    "es6": true
+  },
+  "plugins": ["react"],//指定插件 （加入第三方插件使用插件环境，使用前必须进行npm安装）
+//  "globals": {//指定全局变量（允许重写变量var1，不允许重写var2）
+//    "var1": true,
+//    "var2": false
+//  },
+  "extends": ["eslint:recommended", "standard", "standard-react"],
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "rules": {//指定检查规则
+    "indent": [//缩进
+      "error",    //  "off"/0关闭该条校验规则   "warn"/1开启该条校验规则警告  "error"/2开启该条校验规则错误
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "windows"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "jsx-quotes": [
+      "error",
+      "prefer-double"
+    ],
+    "semi": [//
+      "error",
+      "always"
+    ],
+    "spaced-comment": [//注释前面是否加空格，若开启，采用/**/的结束前后都要有空格
+      "off",
+      "always"
+    ],
+    "operator-linebreak": [
+      "error",
+      "after",
+      {
+        "overrides": {
+          "?": "ignore",
+          ":": "ignore"
+        }
+      }
+    ]
+  }
+}
